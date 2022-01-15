@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-)vd$vo8&bo4$t@y!atn(%*l1l_t!9p&9+u2kou+hi)$h-y$gji
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kc487@vcm-24042.vm.duke.edu','yy340@vcm-24421.vm.duke.edu','loaclhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'account'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'ride_sharing_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ECE568_database',
+        'USER':'ECE568_database_user',
+        'PSSWORD':'mypassword',
+        'HOST':'127.0.0.1',
+        'PORT':'5432'
     }
 }
 
