@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
-<body>
-
-<h1>My First Heading</h1>
-
-<p>My first paragraph.</p>
-
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Riding share service</title>
+    </head>
+    <body>
+        <h2>Welcome to service</h2>
+        {% if request.user.is_authenticated %}
+            <p>{{request.user}} You're the memebership, welcome</p>
+        {% else %}
+            <p>Your login information is wrong<a href="/accounts/login/">login</a></p>
+        {% endif %}
+    </body>
 </html>
