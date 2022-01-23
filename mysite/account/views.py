@@ -27,11 +27,11 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        form = CreatUserForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('')
     else:
-        form = CreatUserForm()
+        form = UserCreationForm()
 
     return render(request,'register.html',{'form':form})
