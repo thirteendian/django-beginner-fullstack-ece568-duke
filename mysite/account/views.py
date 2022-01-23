@@ -1,8 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
+
+from .forms import *
 
 
 def index(request, id):
@@ -24,4 +26,12 @@ def login(request):
         return render(request, 'login.html', locals())
 
 def register(request):
-    return render(request,'register.html')
+    if request.method == 'POST':
+        form = CreatUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        else:
+            form = CreatUserForm()
+
+    return render(request,'register.html',{'form':form})
