@@ -3,6 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('index/',views.index),
-    path('accounts/login/',views.login),# 'accounts/login' is the default page of Django login page
+    path('',views.login, name='login'),
+    path('<int:id>/index/',views.index,name = 'index'),
+    path('register', views.register, name='register'),
 ]

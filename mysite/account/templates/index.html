@@ -6,10 +6,5 @@
     </head>
     <body>
         <h2>Welcome to service</h2>
-        {% if request.user.is_authenticated %}
-            <p>{{request.user}} You're the memebership, welcome</p>
-        {% else %}
-            <p>Your login information is wrong<a href="/accounts/login/">login</a></p>
-        {% endif %}
     </body>
 </html>

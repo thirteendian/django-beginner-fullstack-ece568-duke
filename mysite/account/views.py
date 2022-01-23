@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 
 
 
-def index(request):
-    return render(request, 'index.html')
+def index(request, id):
+    user = get_object_or_404(User, id=id)
+    return render(request, 'index.html', {'user', user})
 
 def login(request):
     # redirect back to index if authenticated
@@ -21,3 +22,6 @@ def login(request):
         return HttpResponseRedirect('/index/')
     else:
         return render(request, 'login.html', locals())
+
+def register(request):
+    return render(request,'register.html')
