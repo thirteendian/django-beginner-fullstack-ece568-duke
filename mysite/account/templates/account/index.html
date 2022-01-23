@@ -6,6 +6,12 @@
     </head>
     <body>
         <h2>Welcome to service,{{user.username}}</h2>
+        <ul>
+            <li>First Name:{{user.first_name}} </li>
+            <li>Last Name: {{user.last_name}} </li>
+            <li>Pass W:{{user.password}} </li>
+            <li>User ID: {{user.id}}</li>
+
         <button type="button">
             <a href="{% url 'logout' %}">Click here to logout!</a>
         </button>
