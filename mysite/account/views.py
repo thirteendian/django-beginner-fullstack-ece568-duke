@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'account/index.html', {'user':user})
 
 def logout(request):
-    auth.logout(rrequest)
+    auth.logout(request)
     return redirect('login')
 
 def login(request):

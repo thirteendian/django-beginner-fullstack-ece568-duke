@@ -5,6 +5,12 @@
         <title>Riding share service</title>
     </head>
     <body>
-        <h2>Welcome to service</h2>
+        <h2>Welcome to service,{{user.username}}</h2>
+        <button type="button">
+            <a href="{% url 'logout' %}">Click here to logout!</a>
+        </button>
+        
+        
+
     </body>
 </html>
