@@ -10,13 +10,13 @@
     <h1>Register!</h1>>
     <form  action="" method="post"></form>
         {% csrf_token %}
-        <label >"username"</label>
+        <label >username</label>
         {{form.username}}
-        <label >"email"</label>
+        <label >email</label>
         {{form.email}}
-        <label >"password1</label>
+        <label >password</label>
         {{form.password1}}
-        <label >"password2</label>
+        <label >confirm password</label>
         {{form.password2}}
     <button type="submit">register</button>
     </form>

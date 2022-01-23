@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import UserCreationForm
 
 from .forms import *
 
@@ -30,7 +30,7 @@ def register(request):
         form = CreatUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('')
     else:
         form = CreatUserForm()
 
