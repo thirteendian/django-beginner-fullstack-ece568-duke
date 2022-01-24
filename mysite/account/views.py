@@ -8,7 +8,7 @@ from .forms import *
 
 
 def index(request):
-    user = myUser.objects.filter(id = request.user.id)
+    user = myUser.objects.get(id =request.user.id)
     if user.is_driver == False:
         return render(request, 'account/index.html', {'user':user})
     else:
