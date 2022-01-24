@@ -3,13 +3,17 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
+from .models import *
 from .forms import *
 
 
 def index(request):
-    user = request.user
-    return render(request, 'account/index.html', {'user':user})
+    user = request.myUser
+    if user.is_driver == 0:
+        return render(request, 'account/index.html', {'user':user})
+    else:
+        user = request.Driver
+        return render(request, 'account/index_driver.html', {'user':user})
 
 def logout(request):
     auth.logout(request)
@@ -39,3 +43,14 @@ def register(request):
         form = CreatUserForm()
 
     return render(request,'account/register.html',{'form':form})
+
+def register_driver(request):
+    if request.method == 'POST':
+        form = CreatDriverForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('index')
+    else:
+        form = CreatDriverForm()
+
+    return render(request,'account/register_driver.html',{'form':form})
