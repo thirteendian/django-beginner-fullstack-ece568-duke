@@ -10,7 +10,7 @@ User = settings.AUTH_USER_MODEL
 
 
 def index(request):
-    user = myUser.objects.get(id =request.user.id)
+    user = User.objects.get(id =request.user.id)
     if user.is_driver == False:
         return render(request, 'account/index.html', {'user':user})
     else:
