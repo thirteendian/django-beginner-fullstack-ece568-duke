@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib import auth
 from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import *
+from .models import User,Driver
 from .forms import *
 
 
