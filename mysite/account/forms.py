@@ -5,7 +5,7 @@ from .models import *
 
 class CreatUserForm(UserCreationForm):
     class Meta(UserCreationForm):
-        model = User
+        model = myUser
         fields = ['username','email','password1','password2','first_name','last_name']
 
 class CreatDriverForm(CreatUserForm):
