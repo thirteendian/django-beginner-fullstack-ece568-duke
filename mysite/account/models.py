@@ -3,8 +3,7 @@ from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 
-class User(User):
-    
+class myUser(User):
     is_driver = models.BooleanField(default = False)
 
 class Driver(User):

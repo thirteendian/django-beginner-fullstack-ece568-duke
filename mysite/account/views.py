@@ -3,12 +3,12 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 #from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import User,Driver
+from .models import myUser,Driver
 from .forms import *
 
 
 def index(request):
-    user = request.user
+    user = myUser.objects.filter(id = request.user.id)
     if user.is_driver == False:
         return render(request, 'account/index.html', {'user':user})
     else:
