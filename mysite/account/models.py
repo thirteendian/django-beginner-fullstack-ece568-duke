@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class myUser(User):
-    user = models.OneToOneField(User,on_delete=CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     is_driver = models.BooleanField(default = False)
 
 class Driver(myUser):
