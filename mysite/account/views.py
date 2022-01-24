@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import myUser,Driver
 from .forms import *
+from django.conf import settings
+User = settings.AUTH_USER_MODEL
 
 
 def index(request):
