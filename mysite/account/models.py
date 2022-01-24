@@ -3,11 +3,11 @@ from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 
-class myUser(User):
+class User(User):
     
     is_driver = models.BooleanField(default = False)
 
-class Driver(myUser):
+class Driver(User):
     TYPE = [('Economy', 'Economy' ),
             ('Intermediate', 'Intermediate'),
             ('Standard', 'Standard'),

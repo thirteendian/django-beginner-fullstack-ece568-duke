@@ -9,10 +9,9 @@ from .forms import *
 
 def index(request):
     user = request.user
-    if user.is_driver == 0:
+    if user.is_driver == False:
         return render(request, 'account/index.html', {'user':user})
     else:
-       
         return render(request, 'account/index_driver.html', {'user':user})
 
 def logout(request):
