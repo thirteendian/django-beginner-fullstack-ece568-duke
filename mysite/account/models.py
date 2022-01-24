@@ -1,12 +1,14 @@
 from asyncio import MultiLoopChildWatcher
 from pyexpat import model
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 
 class myUser(User):
+    user = models.OneToOneField(User,on_delete=CASCADE)
     is_driver = models.BooleanField(default = False)
 
-class Driver(User):
+class Driver(myUser):
     TYPE = [('Economy', 'Economy' ),
             ('Intermediate', 'Intermediate'),
             ('Standard', 'Standard'),
