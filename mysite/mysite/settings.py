@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','vcm-24421.vm.duke.edu','vcm-24042.vm.duke.edu']
 
-AUTH_USER_MODEL = 'account.myUser'
+#AUTH_USER_MODEL = 'account.myUser'
 # Application definition
 
 INSTALLED_APPS = [

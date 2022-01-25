@@ -2,11 +2,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class myUser(User):
-    #user = models.OneToOneField(User,on_delete=models.CASCADE)
+class myUser(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     is_driver = models.BooleanField(default = False)
 
-class Driver(myUser):
+class Driver(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    is_driver = models.BooleanField(default = True)
     TYPE = [('Economy', 'Economy' ),
             ('Intermediate', 'Intermediate'),
             ('Standard', 'Standard'),

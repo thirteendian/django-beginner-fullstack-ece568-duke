@@ -1,17 +1,16 @@
 from django.shortcuts import get_object_or_404, render,redirect
-from django.contrib import auth
+from django.contrib import auth,messages
 from django.http import HttpResponseRedirect
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import myUser,Driver
 from .forms import *
-from django.conf import settings
-User = settings.AUTH_USER_MODEL
+
 
 
 def index(request):
     user = User.objects.get(id =request.user.id)
-    if user.is_driver == False:
+    if user.myUser.is_driver == False:
         return render(request, 'account/index.html', {'user':user})
     else:
         return render(request, 'account/index_driver.html', {'user':user})
@@ -24,6 +23,7 @@ def login(request):
     # redirect back to index if authenticated
     if request.user.is_authenticated:
         return HttpResponseRedirect('index')
+    
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
@@ -32,6 +32,7 @@ def login(request):
         auth.login(request, user)
         return HttpResponseRedirect('index')
     else:
+        messages.info(request,'Wrong username or password')
         return render(request, 'account/login.html', locals())
 
 def register(request):
