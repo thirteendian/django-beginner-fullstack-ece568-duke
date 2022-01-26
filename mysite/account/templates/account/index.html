@@ -5,12 +5,12 @@
         <title>Riding share service</title>
     </head>
     <body>
-        <h2>Welcome to service,{{user.username}}</h2>
+        <h2>Welcome to service,{{myuser.user.username}}</h2>
         <ul>
-            <li>First Name:{{user.first_name}} </li>
-            <li>Last Name: {{user.last_name}} </li>
-            <li>Pass W:{{user.password}} </li>
-            <li>User ID: {{user.id}}</li>
+            <li>First Name:{{myuser.user.first_name}} </li>
+            <li>Last Name: {{myuser.user.last_name}} </li>
+            <li>email: {{myuser.user.email}} </li>
+            <li>User ID: {{myuser.user.id}}</li>
 
        
         <h3>Driver Information: You are not a driver</h3>

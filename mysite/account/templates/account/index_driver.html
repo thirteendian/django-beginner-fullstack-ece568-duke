@@ -5,21 +5,21 @@
         <title>Riding share service</title>
     </head>
     <body>
-        <h2>Welcome to service,{{user.username}}</h2>
+        <h2>Welcome to service,{{driver.user.username}}</h2>
         <ul>
-            <li>First Name:{{user.first_name}} </li>
-            <li>Last Name: {{user.last_name}} </li>
-            <li>Pass W:{{user.password}} </li>
-            <li>User ID: {{user.id}}</li>
+            <li>First Name:{{driver.user.first_name}} </li>
+            <li>Last Name: {{driver.user.last_name}} </li>
+            <li>email: {{driver.user.email}}</li>
+            <li>User ID: {{driver.user.id}}</li>
 
         </ul>
         
-        <h3>Driver Information: You are not a driver</h3>
+        <h3>Driver Information: You are a driver</h3>
         <ul>
-            <li>vehicle type: {{user.Driver.vehicle_type}}</li>
-            <li>license_plate_number: {{user.Driver.license_plate_number}}</li>
-            <li>max_number_passengers: {{user.Driver.max_number_passengers}}</li>
-            <li>special_request: {{user.Driver.special_request}}</li>
+            <li>vehicle type: {{driver.vehicle_type}}</li>
+            <li>license_plate_number: {{driver.license_plate_number}}</li>
+            <li>max_number_passengers: {{driver.max_number_passengers}}</li>
+            <li>special_request: {{driver.special_request}}</li>
         </ul>>
        
      
