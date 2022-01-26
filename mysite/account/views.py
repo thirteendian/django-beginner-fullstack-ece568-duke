@@ -3,7 +3,7 @@ from django.contrib import auth,messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import myUser,Driver
+from .models import *
 from .forms import *
 
 
@@ -78,3 +78,32 @@ def register_driver(request):
         form = CreatDriverForm()
 
     return render(request,'account/register_driver.html',{'form':form})
+
+def request(request):
+
+    if request.method == 'POST':
+        user= request.user
+        form = RideRequestForm(request.POST)
+        if form.is_valid():
+            my_ride = Ride.objects.create(owner=user)
+            my_ride.destination = form.cleaned_data['destination']
+            my_ride.arrival_time = form.cleaned_data['arrival_time']
+            my_ride.vehicle_type = form.cleaned_data['vehicle_type']
+            my_ride.total_passengers = form.cleaned_data['total_passengers']
+            my_ride.special_request = form.cleaned_data['special_request']
+            my_ride.shared_or_not = form.cleaned_data['shared_or_not']
+            my_ride.save()
+            return redirect('index') # 'view/myride'
+    else:
+            form = RideRequestForm()
+    return render(request,'account/require.html',{'form':form})
+
+def view_owned_ride(request): 
+    all_ride = Ride.objects.all()
+    return render(request,'account/view_owned_ride.html',{'all_ride':all_ride})
+
+def view_shared_ride(request):
+    return
+
+def view_drive_ride(request):
+    return

@@ -17,3 +17,25 @@ class Driver(models.Model):
     license_plate_number = models.CharField(max_length=200,null=True)
     max_number_passengers = models.IntegerField(null=True)
     special_request = models.CharField(max_length=200, blank =True,null=True)
+class Ride(models.Model):
+    owner = models.OneToOneField(User,on_delete=models.CASCADE)
+    driver = models.OneToOneField(Driver,on_delete=models.CASCADE,null=True,blank=True)
+    shared_or_not = models.BooleanField(default = False)
+    destination = models.CharField(max_length = 60, blank=False)
+    arrival_time = models.DateTimeField(null=True)
+    TYPE_vehicle = [('Economy', 'Economy' ),
+            ('Intermediate', 'Intermediate'),
+            ('Standard', 'Standard'),
+            ('Premium','Premium')]
+    vehicle_type = models.CharField(max_length=20, choices= TYPE_vehicle,null=True)
+
+    TYPE_status=[
+        ('Open','Open'),
+        ('Confirmed','Confirmed'),
+        ('Completed','Completed')
+    ]
+    status = models.CharField(max_length = 20, choices = TYPE_status, null = True, default = 'Open')
+    is_reached = models.BooleanField(default = False)
+    total_passengers = models.IntegerField(null = True)
+    sharer_number = models.IntegerField(null = True)
+    special_request = models.CharField(max_length=20, blank = True, null=True)
