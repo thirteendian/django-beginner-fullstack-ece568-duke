@@ -9,11 +9,14 @@ from .forms import *
 
 
 def index(request):
-    user = User.objects.get(id =request.user.id)
-    if user.myUser.is_driver == False:
-        return render(request, 'account/index.html', {'user':user})
+    my_user = myUser.objects.get(user = request.user)
+    #my_user = myUser.objects.get(id = user.id)
+    #return render(request, 'account/index.html', {'user':user})
+    if my_user.is_driver == False:
+        return render(request, 'account/index.html', {'user':my_user})
     else:
-        return render(request, 'account/index_driver.html', {'user':user})
+        driver = Driver.objects.get(user=request.user)
+        return render(request, 'account/index_driver.html', {'user':driver})
 
 def logout(request):
     auth.logout(request)
@@ -40,6 +43,8 @@ def register(request):
         form = CreatUserForm(request.POST)
         if form.is_valid():
             user = form.save()
+            my_user = myUser(user = user)
+            my_user.save()
             return redirect('login')
     else:
         form = CreatUserForm()
@@ -47,10 +52,26 @@ def register(request):
     return render(request,'account/register.html',{'form':form})
 
 def register_driver(request):
+    user = request.user
+    my_user = get_object_or_404(myUser,user = user)
     if request.method == 'POST':
         form = CreatDriverForm(request.POST)
+
         if form.is_valid():
-            user = form.save()
+            
+            
+            my_driver = Driver(user=user)
+            
+            my_driver.vehicle_type = form.cleaned_data['vecicle_type']
+            my_driver.license_plate_number = form.cleaned_data['license_plate_number']
+            my_driver.max_number_passengers = form.cleaned_data['max_number_passengers']
+            my_driver.special_request = form.cleaned_data['special_request']
+       
+            my_driver.save()
+            my_user.is_driver = True
+
+            #my_driver.myuser = my_user
+            #my_driver.save()
             return redirect('index')
     else:
         form = CreatDriverForm()

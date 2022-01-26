@@ -11,5 +11,4 @@ class CreatUserForm(UserCreationForm):
 class CreatDriverForm(ModelForm):
     class Meta:
         model = Driver
-        is_driver = True
         fields = ['vehicle_type','license_plate_number','max_number_passengers','special_request']

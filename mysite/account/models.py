@@ -8,7 +8,7 @@ class myUser(models.Model):
 
 class Driver(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    is_driver = models.BooleanField(default = True)
+    #is_driver = models.BooleanField(default = True)
     TYPE = [('Economy', 'Economy' ),
             ('Intermediate', 'Intermediate'),
             ('Standard', 'Standard'),
