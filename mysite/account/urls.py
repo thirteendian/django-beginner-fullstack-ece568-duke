@@ -13,5 +13,6 @@ urlpatterns = [
     path('<int:id>/view_shared_ride/',views.view_shared_ride,name='view_shared_ride'),
     path('<int:id>/view_drive_ride/',views.view_drive_ride,name='view_drive_ride'),
     path('<int:id>/edituserinfo/',views.edit_user_info,name='edituserinfo'),
-    path('<int:id>/editdriverinfo/',views.edit_driver_info,name='editdriverinfo')
+    path('<int:id>/editdriverinfo/',views.edit_driver_info,name='editdriverinfo'),
+    path('cancel/<int:id>/',views.cancel_ride,name='cancelride')
 ]

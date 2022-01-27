@@ -138,6 +138,13 @@ def view_owned_ride(request,id):
     all_ride = Ride.objects.all().filter(owner = request.user)
     return render(request,'account/view_owned_ride.html',{'all_ride':all_ride,'user':request.user})
 
+def cancel_ride(request,id):
+    cancelled_ride = Ride.objects.get(id=id)
+    user_id = cancelled_ride.owner.id
+    cancelled_ride.delete()
+    return redirect('view_owned_ride',id=user_id)
+
+
 def view_shared_ride(request,id):
     return
 
