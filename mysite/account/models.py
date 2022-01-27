@@ -18,8 +18,8 @@ class Driver(models.Model):
     max_number_passengers = models.IntegerField(null=True)
     special_request = models.CharField(max_length=200, blank =True,null=True)
 class Ride(models.Model):
-    owner = models.OneToOneField(User,on_delete=models.CASCADE)
-    driver = models.OneToOneField(Driver,on_delete=models.CASCADE,null=True,blank=True)
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
+    driver = models.ForeignKey(Driver,on_delete=models.CASCADE,null=True,blank=True)
     shared_or_not = models.BooleanField(default = False)
     destination = models.CharField(max_length = 60, blank=False)
     arrival_time = models.DateTimeField(null=True)

@@ -98,8 +98,9 @@ def request(request):
             form = RideRequestForm()
     return render(request,'account/require.html',{'form':form})
 
+
 def view_owned_ride(request): 
-    all_ride = Ride.objects.all()
+    all_ride = Ride.objects.all().filter(owner = request.user)
     return render(request,'account/view_owned_ride.html',{'all_ride':all_ride})
 
 def view_shared_ride(request):
