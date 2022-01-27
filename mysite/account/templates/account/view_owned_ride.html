@@ -36,7 +36,7 @@
      {% endfor %}
      
        <button type="button">
-           <a href="{% url 'index' %}">Return to Index</a>
+           <a href="{% url 'index' user.id %}">Return to Index</a>
        </button>
  
    </body>

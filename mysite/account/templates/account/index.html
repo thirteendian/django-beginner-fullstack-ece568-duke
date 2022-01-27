@@ -6,7 +6,12 @@
     </head>
     <body>
         <h2>Welcome to service,{{myuser.user.username}}</h2>
-        <ul>
+	
+        <button type="button">
+            <a href="{% url 'edituserinfo' myuser.user.id%}">Edit your User Information</a>
+        </button>
+        
+	<ul>
             <li>First Name:{{myuser.user.first_name}} </li>
             <li>Last Name: {{myuser.user.last_name}} </li>
             <li>email: {{myuser.user.email}} </li>
@@ -16,31 +21,25 @@
         <h3>Driver Information: You are not a driver</h3>
 
         <button type="button">
-            <a href="{% url 'registerdriver' %}">Register as driver</a>
+            <a href="{% url  'registerdriver' myuser.user.id %}">Register as driver</a>
         </button>
-        
 
         <button type="button">
             <a href="{% url 'logout' %}">Click here to logout!</a>
         </button>
 
 	<button type="button">
-            <a href="{% url 'request' %}">Click here to Request Open Ride!</a>
+            <a href="{% url 'request' myuser.user.id%}">Click here to Request Open Ride!</a>
         </button>
 
 
 	<button type="button">
-            <a href="{% url 'view_owned_ride' %}">View My Owned Ride</a>
-        </button>
-
-	
-	<button type="button">
-            <a href="{% url 'view_shared_ride' %}">View My Shared Ride</a>
+            <a href="{% url 'view_owned_ride' myuser.user.id%}">View My Owned Ride</a>
         </button>
 
 	
 	<button type="button">
-            <a href="{% url 'view_drive_ride' %}">View My Drive Ride</a>
+            <a href="{% url 'view_shared_ride' myuser.user.id%}">View My Shared Ride</a>
         </button>
 
     </body>

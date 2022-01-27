@@ -1,14 +1,23 @@
 from dataclasses import field
 from django.forms import ModelForm
 from django.forms import DateTimeField
-from django.contrib.auth.forms import UserCreationForm
+from django.forms import ChoiceField
+from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from .models import *
 
 class CreatUserForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = User 
-        fields = ['username','email','password1','password2','first_name','last_name']
+        fields = ['username','email','first_name','last_name','password1','password2']
 
+class EditUserForm(UserCreationForm):
+    password1 = None
+    password2 = None
+    class Meta(UserCreationForm):
+        model=User
+        fields = ['email','first_name','last_name']
+
+        
 class CreatDriverForm(ModelForm):
     class Meta:
         model = Driver
@@ -19,3 +28,22 @@ class RideRequestForm(ModelForm):
     class Meta:
         model = Ride
         fields = ['shared_or_not','destination','arrival_time','vehicle_type','total_passengers','special_request']
+
+        
+        
+'''
+class EditChoiceForm(ModelForm):
+    OPTIONS=[
+        ('Password','user_password'),
+        ('Email Address','user_email'),
+        ('First Name','user_firstname'),
+        ('Last Name','user_lastname'),
+        ('Vehicle Type','user_vehicle_type'),
+        ('License Plate Number','user_license_plate_number'),
+        ('Max Passengers','user_max_passengers'),
+        ('Special Request','user_special_request')
+    ]
+    choice = forms.ChoiceField(required=True,choices=OPTIONS)
+class EditInputForm(ModelForm):
+     input_value = forms.CharField(max_length=20,choices = )
+'''
