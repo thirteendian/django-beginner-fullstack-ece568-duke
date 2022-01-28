@@ -11,6 +11,10 @@
             <a href="{% url 'edituserinfo' driver.user.id %}">Edit your User Information</a>
         </button>
 
+        <button type="button">
+            <a href="{% url 'joinride' myuser.user.id%}">Join an Existing Ride !</a>
+        </button>
+
         <ul>
             <li>First Name:{{driver.user.first_name}} </li>
             <li>Last Name: {{driver.user.last_name}} </li>
@@ -25,6 +29,10 @@
             <a href="{% url 'editdriverinfo' driver.user.id %}">Edit your Driver Information</a>
         </button>
 
+	<button type="button">
+            <a href="{% url 'driversearch' driver.user.id %}">Take An Order as Driver !</a>
+	</button>
+		
         <ul>
             <li>vehicle type: {{driver.vehicle_type}}</li>
             <li>license_plate_number: {{driver.license_plate_number}}</li>

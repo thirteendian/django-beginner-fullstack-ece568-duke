@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Edit Your Order</title>
+   </head>
+   <body>
+       <h1>Please Edit Your Order</h1>
+     <form actio = "" method = "post">
+       {% csrf_token %}
+
+       
+	 <p>Old Value: {{old_ride.destination}}</p>
+	 <p>New Value: {{form.destination}}</p>
+	 <p>Old Value: {{old_ride.arrival_time}}</p>
+	 <p>New Value: {{form.arrival_time}}</p>
+	 <p>Old Value: {{old_ride.shared_or_not}}</p>
+	 <p>New Value: {{form.shared_or_not}}</p>
+	 <p>Old Value: {{old_ride.vehicle_type}}</p>
+	 <p>New Value: {{form.vehicle_type}}</p>
+	 <p>Old Value: {{old_ride.total_passengers}}</p>
+	 <p>New Value: {{form.total_passengers}}</p>
+	 <p>Old Value: {{old_ride.special_request}}</p>
+	 <p>New Value: {{form.special_request}}</p>
+      
+     <input type="submit" value="Create">
+     </form>
+     <p><a href="{% url 'view_owned_ride' old_ride.id %}">Cancel</a></p>
+   </body>
+</html>

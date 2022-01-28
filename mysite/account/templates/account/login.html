@@ -6,6 +6,11 @@
     </head>
     <body>
       <h1>If you has registered as a memeber, please login<h1>
+	  {% if messages %}
+	  {% for message in messages %}
+	  <a id="messages">{{message}} </a>
+	  {% endfor %}
+	  {% endif %}
           <form action="" method="post">
 	    {% csrf_token %}
             <label for="username">username:</label>

@@ -10,7 +10,11 @@
         <button type="button">
             <a href="{% url 'edituserinfo' myuser.user.id%}">Edit your User Information</a>
         </button>
-        
+        	
+        <button type="button">
+            <a href="{% url 'joinride' myuser.user.id%}">Join an Existing Ride !</a>
+        </button>
+
 	<ul>
             <li>First Name:{{myuser.user.first_name}} </li>
             <li>Last Name: {{myuser.user.last_name}} </li>

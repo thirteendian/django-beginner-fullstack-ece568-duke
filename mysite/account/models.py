@@ -18,8 +18,9 @@ class Driver(models.Model):
     max_number_passengers = models.IntegerField(null=True)
     special_request = models.CharField(max_length=200, blank =True,null=True)
 class Ride(models.Model):
-    owner = models.ForeignKey(User,on_delete=models.CASCADE)
+    owner = models.ForeignKey(User,on_delete=models.CASCADE,related_name='owner')
     driver = models.ForeignKey(Driver,on_delete=models.CASCADE,null=True,blank=True)
+    sharer = models.ManyToManyField(User,blank=True)
     shared_or_not = models.BooleanField(default = False)
     destination = models.CharField(max_length = 60, blank=False)
     arrival_time = models.DateTimeField(null=True)
@@ -39,3 +40,4 @@ class Ride(models.Model):
     total_passengers = models.IntegerField(null = True)
     sharer_number = models.IntegerField(null = True)
     special_request = models.CharField(max_length=20, blank = True, null=True)
+    
