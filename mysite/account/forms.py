@@ -1,5 +1,5 @@
 from dataclasses import field
-from django.forms import ModelForm
+from django.forms import ModelForm,Form
 from django.forms import DateTimeField, IntegerField,CharField
 from django.forms import ChoiceField
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
@@ -29,9 +29,10 @@ class RideRequestForm(ModelForm):
         model = Ride
         fields = ['shared_or_not','destination','arrival_time','vehicle_type','total_passengers','special_request']
 
-class SharerRequestForm(ModelForm):
-    destination = CharField(max_length = 60)
-    earliest = DateTimeField(input_formats=["%m-%d-%Y %H:%M"],help_text="Please using format: <em>MM-DD-YYYY HH:mm<em>")
-    latest = DateTimeField(input_formats=["%m-%d-%Y %H:%M"],help_text="Please using format: <em>MM-DD-YYYY HH:mm<em>")
-    number_of_passengers = IntegerField(null = True)
+
+class SharerRequestForm(Form):
+    destination = CharField(max_length = 60,help_text="Destination")
+    earliest = DateTimeField(input_formats=["%m-%d-%Y %H:%M"],help_text="Earliest Time You Required, Please using format: <em>MM-DD-YYYY HH:mm<em>")
+    latest = DateTimeField(input_formats=["%m-%d-%Y %H:%M"],help_text="Latest Time Your Required Please using format: <em>MM-DD-YYYY HH:mm<em>")
+    number_of_passengers = IntegerField(help_text="Number Of Passengers")
     

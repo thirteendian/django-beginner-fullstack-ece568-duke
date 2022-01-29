@@ -12,7 +12,7 @@
         </button>
 
         <button type="button">
-            <a href="{% url 'joinride' myuser.user.id%}">Join an Existing Ride !</a>
+            <a href="{% url 'joinride' driver.user.id %}">Join an Existing Ride !</a>
         </button>
 
         <ul>
@@ -55,7 +55,7 @@
 
 	
 	<button type="button">
-            <a href="{% url 'view_shared_ride' driver.user.id %}">View My Shared Ride</a>
+            <a href="{% url 'view_shared_ride' driver.user.id %}">View My Joined Ride</a>
         </button>
 
 	

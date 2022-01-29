@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Edit Your Filter</title>
+   </head>
+   <body>
+       <h1>Please Edit Your Filter as a Sharer</h1>
+     <form actio = "" method = "post">
+       {% csrf_token %}
+       
+	 <p>Old Value: {{destination}}</p>
+	 <p>New Value: {{form.destination}}</p>
+	 <p>Old Value: {{earliest}}</p>
+	 <p>New Value: {{form.earliest}}</p>
+	 <p>Old Value: {{lastest}}</p>
+	 <p>New Value: {{form.lastest}}</p>
+	 <p>Old Value: {{number_of_passengers}}</p>
+         <p>New Value: {{form.number_of_passengers}}</p>
+       
+     <input type="submit" value="Submit">
+     </form>
+     <p><a href="{% url 'joinride' user.id %}">Cancel</a></p>
+   </body>
+</html>

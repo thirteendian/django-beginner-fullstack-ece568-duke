@@ -19,5 +19,8 @@ urlpatterns = [
     path('<int:id>/driver_search/',views.driver_search,name='driversearch'),
     path('confirm_ride/<int:id>/',views.confirm_ride,name = 'confirmride'),
     path('complete_ride/<int:id>/',views.complete_ride,name='completeride'),
-    path('<int:id>/join_ride/',views.join_ride,name='joinride')
+    path('<int:id>/join_ride/',views.join_ride,name='joinride'),
+    path('jointhis_ride/<int:id>/',views.join_this_ride,name='jointhisride'),
+    #path('<int:id>/edit_sharer_filter',views.edit_sharer_filter,name='editsharerfilter'),
+    path('quit_this_ride/<int:id>',views.quit_this_ride,name='quitthisride')
 ]
