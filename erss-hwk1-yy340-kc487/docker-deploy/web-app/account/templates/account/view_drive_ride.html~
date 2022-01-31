@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      table, th, td {border: 1px solid black;}
+    </style>
+       <meta charset="UTF-8">
+       <title>View All Your Driving Ride</title>
+   </head>
+  <body>
+    <h1>This is all ride that you as a driver</h1>
+     {% for ride in all_ride %}
+     <table style="width:60%">
+       <tr>
+	 <th>Owner Name</th>
+	 <th>Email</th>
+	 <th>Destination</th>
+	 <th>Arrival Time</th>
+	 <th>Total Passengers</th>
+	 <th>Shared or Not</th>
+	 <th>Special Requests</th>
+	 <th>Ride Status</th>
+	 <th>Driver</th>
+       </tr>
+       <tr>
+	 <td>{{ride.owner.first_name}}{{ride.owner.last_name}}</td>
+	 <td>{{ride.owner.email}}</td>
+	 <td>{{ride.destination}}</td>
+	 <td>{{ride.arrival_time}}</td> 
+	 <td>{{ride.total_passengers}}</td>
+	 <td>{{ride.shared_or_not}}</td>
+	 <td>{{ride.special_request}}</td>
+	 <td>{{ride.status}}</td>
+	 <td>{{ride.driver.user.username}}</td>
+       </tr>
+     </table>
+     {% if ride.status == 'Confirmed' %}
+     <a href="{% url 'completeride' ride.id %}">Complete<a>
+	 {% endif %}
+	    
+	 {% endfor %}
+     
+       <button type="button">
+           <a href="{% url 'index' user.id %}">Return to Index</a>
+       </button>
+
+              <form method = "post" action="">
+	 {% csrf_token %}
+	 <select name = "confirmed_or_completed">
+	   <option value="All">All</option>
+	   <option value="Confirmed">Confirmed</option>
+	   <option value="Completed">Completed</option>
+	 </select>
+	 <input type = "submit" value="Update View">
+	 </form>
+
+   </body>
+</html>

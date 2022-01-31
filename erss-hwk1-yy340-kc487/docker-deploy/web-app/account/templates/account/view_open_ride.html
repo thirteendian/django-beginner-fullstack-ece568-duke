@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      table, th, td {border: 1px solid black;}
+    </style>
+       <meta charset="UTF-8">
+       <title>View All Available Rides</title>
+   </head>
+  <body>
+    <h1>These Are Opens Rides That Matched Your Vehicle Info</h1>
+    {% for ride in all_ride %}
+    {% if  ride.total_people <= driver_max_capacity and ride.owner != user%}
+    {% if driver_special_request == ride.special_request or ride.special_request == '' %}
+     <table style="width:100%">
+       <tr>
+	 <th>Owner Name</th>
+	 <th>Email</th>
+	 <th>Destination</th>
+	 <th>Arrival Time</th>
+	 <th>Owner Party Passengers</th>
+	 <th>Total Passengers</th>
+	 <th>Shared or Not</th>
+	 <th>Special Requests</th>
+	 <th>Ride Status</th>
+       </tr>
+       <tr>
+	 <td>{{ride.owner.first_name}}{{ride.owner.last_name}}</td>
+	 <td>{{ride.owner.email}}</td>
+	 <td>{{ride.destination}}</td>
+	 <td>{{ride.arrival_time}}</td> 
+	 <td>{{ride.total_passengers}}</td>
+	 <td>{{ride.total_people}}</td>
+	 <td>{{ride.shared_or_not}}</td>
+	 <td>{{ride.special_request}}</td>
+	 <td>{{ride.status}}</td>
+       </tr>
+     </table>
+     
+     <button><a href="{% url 'confirmride' ride.id %}">Confirm<a></button>
+     {% endif %}
+     {% endif %}
+	 {% endfor %}
+     
+       <button type="button">
+           <a href="{% url 'index' user.id %}">Return to Index</a>
+       </button>
+
+ 
+   </body>
+</html>

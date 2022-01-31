@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title></title>
+   </head>
+   <body>
+ 
+     <form action="#">
+      <label for="choice">Choose what do you want to change</label>
+      <select name="Choices" id="choice">
+        <option value="Password">user_password</option>
+        <option value="Email Address">user_email</option>
+	<option value="First Name">user_firstname</option>
+	<option value="Last Name">user_lastname</option>
+	<option value="Vehicle Type">user_vehicle_type</option>
+	<option value="License Plate Number">user_license_plate_number</option>
+	<option value="Max Passengers">user_max_passengers</option>
+	<option value="Special Request">user_special_request</option>
+      </select>
+      <input type="submit" value="Submit" />
+</form>
+     
+        <button type="button">
+           <a href="{% url 'index' %}">Return to Index</a>
+       </button>
+ 
+ 
+   </body>
+</html>
